@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td,th
+        {
+            text-align:center;
+            padding: 5px;
+            border:rgb(255, 0, 0) solid 8px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgb(0, 0, 0);
+        }
+        th
+        {
+            border:rgb(42, 185, 23) solid 8px;  
+        }
+        th:hover
+        {
+            border:rgb(255, 0, 0) solid 8px;
+        }
+        td:hover
+        {
+            border:rgb(7, 255, 53) solid 8px;
+        }
+        table
+        {
+            border: 3px solid rgb(111, 0, 255);
+        }
+        body
+        {
+            background: rgb(255, 213, 213);
+        }
+        
+    </style>
+</head>
+<body>
+    <center>
+        <h1>EMP table</h1>
+    <table border="3px">
+
+        <tr>
+            <th>empno</th>
+            <th>ename</th>
+            <th>JOB</th>
+            <th>mgr</th>
+            <th>hiredate</th>
+            <th>sal</th>
+            <th>comm</th>
+            <th>deptno</th>
+        </tr>
+    {% for a in enm %}
+        <tr>
+            <td>{{a.empno}}</td>
+            <td>{{a.ename}}</td>
+            <td>{{a.job}}</td>
+            <td>{{a.mgr}}</td>
+            <td>{{a.hiredate}}</td>
+            <td>{{a.sal}}</th>
+            <td>{{a.comm}}</td>
+            <td>{{a.deptno}}</td>
+        </tr>
+
+    {% endfor %}
+
+    
+
+
+
+    </table>
+
+
+
+    </center>
+</body>
+</html>
