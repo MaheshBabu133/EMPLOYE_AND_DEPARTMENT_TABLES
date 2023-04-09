@@ -6,29 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        td,th
+        td,th,table
         {
             text-align:center;
             padding: 5px;
-            border:rgb(255, 0, 0) solid 8px;
+            border:rgb(255, 0, 0) solid 5px;
             border-radius: 5px;
             box-shadow: 0px 0px 10px rgb(0, 0, 0);
+            font-size: 30px;
+    
+            font-family:fantasy;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-family: cursive;
+            font-family: sans-serif;
+            
+        
+        
         }
         th
         {
-            border:rgb(42, 185, 23) solid 8px;  
+            border:rgb(86, 237, 66) solid 5px;  
         }
         th:hover
         {
-            border:rgb(255, 0, 0) solid 8px;
+            border:rgb(255, 247, 0) solid 5px;
+            cursor: pointer;
+            padding: 15px;
+            color:white;
         }
         td:hover
         {
-            border:rgb(7, 255, 53) solid 8px;
+            border:rgb(0, 255, 242) solid 5px;
+            padding: 10px;
+            cursor: pointer;
+            color:whitesmoke;
+            padding: px;
         }
         table
         {
-            border: 3px solid rgb(111, 0, 255);
+            border: 5px solid rgb(254, 140, 140);
+            background:linear-gradient(60deg,rgb(169, 248, 231),rgb(134, 227, 214),rgb(42, 250, 222));
+            border: collapse;
         }
         body
         {
@@ -39,18 +57,18 @@
 </head>
 <body>
     <center>
-        <h1>EMP table</h1>
+        <h1>EMPLOYE(EMP) table</h1>
     <table border="3px">
 
         <tr>
-            <th>empno</th>
-            <th>ename</th>
+            <th>EMPNO</th>
+            <th>ENAME</th>
             <th>JOB</th>
-            <th>mgr</th>
-            <th>hiredate</th>
-            <th>sal</th>
-            <th>comm</th>
-            <th>deptno</th>
+            <th>MGR</th>
+            <th>HIREDATE</th>
+            <th>SAL</th>
+            <th>COMM</th>
+            <th>DEPTNO</th>
         </tr>
     {% for a in enm %}
         <tr>
@@ -61,7 +79,7 @@
             <td>{{a.hiredate}}</td>
             <td>{{a.sal}}</th>
             <td>{{a.comm}}</td>
-            <td>{{a.deptno}}</td>
+            <td>{{a.deptno.deptno}}</td>
         </tr>
 
     {% endfor %}

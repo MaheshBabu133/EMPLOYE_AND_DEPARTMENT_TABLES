@@ -6,7 +6,7 @@ class DEPT(models.Model):
     dname=models.CharField(max_length=100)
     loc=models.CharField(max_length=100)
     def __str__(self):
-        return str(self.deptno)
+        return self.deptno
 class EMP(models.Model):
     empno=models.IntegerField(primary_key=True)
     ename=models.CharField(max_length=100)
