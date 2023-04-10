@@ -37,7 +37,7 @@ def emp(request):
     LOM=EMP.objects.filter(sal__regex='3[0-9]{3}')   #it will fetch whose salary is starts with 3 and after 3 which have 3 charachters 
     LOM=EMP.objects.filter(job__regex='S[A-Z]{6}N')   #it will fetch whose job is starts with S and ends with N and which contains 6 characters between
     LOM=EMP.objects.all()[0:6] # it will give first 6 records 
-    LOM=EMP.objects.all()[0:6:2] # it will fetch 3 reconda starts with 0 and step value is 2 i.e i will give 0th and 3rd and 5th row 
+    LOM=EMP.objects.all()[0:6:2] # it will fetch 3 records starts with 0 and step value is 2 i.e i will give 0th and 3rd and 5th row 
     LOM=EMP.objects.all()
     d={'enm':LOM}
     return render(request,'emp.html',d)
@@ -45,6 +45,31 @@ def emp(request):
 
 
 
-    '''LOW=Webpage.objects.filter(name__regex='[a-zA-Z]{7}')
-    LOW=Webpage.objects.filter(Q(topic_name='Cricket') & Q(name='dhoni'))
-'''
+
+
+def update_data(request):
+    DEPT.objects.filter(deptno=10).update(loc='karnataka')    #it will update the loc=karnataka whose deptno=10 (single column is updated)
+    DEPT.objects.filter(deptno__in=(10,20)).update(loc='madanapalle') #it will update the loc=madapalle whose deptno 10 or 20
+    DEPT.objects.filter(deptno__in=(10,20)).update(loc='hydrabad') #it will update the loc=hydrabad whose deptno 10 or 20
+    DEPT.objects.all().update(dname='maha department') #it will update the dname='maha department' for all    (multiple columns are updated)
+    DEPT.objects.update_or_create(deptno=10,defaults={'dname':'police department'})  #dept no 10 is existed so it will update 
+    DEPT.objects.update_or_create(deptno=50,defaults={'dname':'medical','loc':'mpl'})  #dept no 50 is not  existed so it will create and update 
+    DEPT.objects.update_or_create(deptno=60,defaults={'dname':'education','loc':'delhi'}) #dept no 60 is not  existed so it will create and update 
+    DEPT.objects.filter(deptno__in=(50,60)).delete() #it will delete the deptno 50 or 60
+    '''DEPT.objects.filter(deptno=10).delete()'''  #it will delete all the data table data deptno
+    d={'data':DEPT.objects.all()} #it used to give all the models objects 
+    return render(request,'dept.html',d)
+
+
+
+
+
+def delete_data(request):
+     #get method is used for the to get the values if values in parent table
+    DO=DEPT.objects.get_or_create(deptno=70)[0]  #deptno 70 is not available so it will create and get its adresss
+    DO.save() 
+    EMP.objects.update_or_create(empno=1111,defaults={'ename':'rajkumar','job':'fighter','sal':40000,'mgr':1,'hiredate':'1885-7-25','deptno':DO}) # here provided date is not available so it create and update
+    EMP.objects.filter(empno=1).delete() #it will delete the records which satisfies the condition
+    EMP.objects.all().delete()   #it will delete all the records
+    d={'enm':EMP.objects.all()}
+    return render(request,'emp.html',d)

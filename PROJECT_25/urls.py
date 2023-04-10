@@ -1,4 +1,4 @@
-"""PROJECT_24 URL Configuration
+"""PROJECT_25 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dept/',dept,name='dept'),
     path('emp/',emp,name='emp'),
+    path('update_data/',update_data,name='update_data'),
+    path('delete_data/',delete_data,name='delete_data'),
 ]
